@@ -1,0 +1,36 @@
+﻿@using Nerede.Models.Views;
+@model IEnumerable<musteriUrun>
+@{
+    ViewBag.Title = "Stoklar";
+    Layout = "~/Views/Shared/_LayoutDukkan.cshtml";
+}
+
+<h2>Stoklar</h2>
+    
+<table class="table">
+    <thead>
+        <tr class="row">
+            <th class="col">Ürün Resmi</th>
+            <th class="col">Ürün Adı</th>
+            <th class="col">Stok Miktarı</th>
+            <th class="col">Ana Fiyatı</th>
+            <th class="col">İndirim Oranı</th>
+            <th class="col">İndirimli Fiyatı</th>
+            <th class="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr class="row">
+            <td class="col"><img height="60px" src="@item.resimYolu@item.resimAdi" /></td>
+            <td class="col">@item.urunAdi</td>
+            <td class="col">@item.stokAdet</td>
+            <td class="col">@item.fiyat</td>
+            <td class="col">@item.indirimTutari</td>
+            <td class="col">@item.indirimliFiyat</td>
+            <td class="col"><a href="/dukkan/stoksilme/@item.stokId" onclick="return silme();">Sil</a> | <a href="/dukkan/stokguncelleme/@item.stokId">Güncelle</a></td>
+        </tr>
+                }
+        </tbody>
+</table>

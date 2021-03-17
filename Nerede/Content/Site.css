@@ -1,0 +1,45 @@
+﻿
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+.logo, .subLogo {
+    max-width: 80%;
+    height: auto;
+}
+
+.subLogo {
+    max-width: 40%;
+}
+
+.jumbotron {
+    border-radius: 0 !important;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+nav.bg-darkRed {
+    background-color: #3a2c2c !important;
+}
+
+body {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%),url(https://i.hizliresim.com/EWrSoC.png);
+    background-size: auto,25%;
+}
+
+.card-3 {
+    flex: 0 0 30% !important;
+    margin-bottom: 15px !important;
+}
+
+.mt-6 {
+    margin-top: 6em !important;
+}

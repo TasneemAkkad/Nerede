@@ -1,0 +1,49 @@
+﻿@using Nerede.Models.Views;
+@model List<musteriUrun>
+@{
+    ViewBag.Title = "Urun";
+}
+<script src="~/Scripts/urunJs.js"></script>
+<style>
+    select:focus,select {
+        border: 0px !important;
+        outline:none;
+    }
+</style>
+
+<h2>Ürün</h2>
+<div style="width: 90%;"  class="d-inline-flex m-4">
+    <div style="width:30% " class="card mr-3">
+        <img class="card-img-top" src="@Model[0].resimYolu@Model[0].resimAdi" alt="Card image" style="width:100%"><div class="card-body">
+            <h4 class="card-title">@Model[0].urunAdi</h4>
+            <p class="card-text">
+            </p>
+        </div>
+    </div>
+    <div id="map-canvas" class="rounded" style="width:70%;">
+        <script type="text/javascript">createMap();</script>
+    </div>
+</div>
+<div class="card m-4 ">
+    <select name="urunler" style=" background-color: #e9ecef;" class="d-inline-flex" size="10" id="urunler" onchange="changeDS()">
+
+        @foreach (var item in Model)
+        {
+            <option value="@item.dukkanAdi">@item.dukkanAdi => @item.indirimliFiyat </option>
+        }
+    </select>
+</div>
+<input type="text" name="xKoordinat" style="height:1px;width:1px;" class="form-control invisible" id="xKoordinat" value="@Request.Cookies["x"].Value" />
+<input type="text" name="yKoordinat" style="height:1px;width:1px;" class="form-control invisible" id="yKoordinat" value="@Request.Cookies["y"].Value" />
+<select name="koordinat" id="koordinat" style="height:1px;width:1px;" class="invisible">
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.xKoordinat"></option>
+        <option value="@item.yKoordinat"></option>
+    }
+</select>
+
+
+
+

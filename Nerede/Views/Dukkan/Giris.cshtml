@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Nerede.Models.Tables.Giris>
+
+@{
+    ViewBag.Title = "Giris";
+    Layout = "~/Views/Shared/_LayoutOut.cshtml";
+}
+
+<h2>Giriş</h2>
+<form method="post">
+    <div>@ViewData["hata"]</div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Kullanıcı Adı</span>
+        </div>
+        <input type="text" id="kullaniciAdi" name="kullaniciAdi" class="form-control" placeholder="Kullanıcı Adı" />
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Şifre</span>
+        </div>
+        <input type="password" id="sifre" name="sifre" class="form-control" placeholder="Şifre" />
+    </div>
+    <input type="submit" value="Giriş Yap" class="btn btn-outline-danger font-weight-bold " id="Send" />
+    <a href="~/Dukkan/yeniDukkan" class="btn btn-outline-danger font-weight-bold">Yeni Kayıt</a>
+</form>
+
+

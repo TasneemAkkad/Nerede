@@ -1,0 +1,63 @@
+﻿@using Nerede.Models.Tables;
+@using Nerede.Models.Views;
+@model musteriUrun
+@{
+    ViewBag.Title = "stokGuncelleme";
+    Layout = "~/Views/Shared/_LayoutDukkan.cshtml";
+}
+    <script type="text/javascript">
+        
+        function change() {
+            $("#indirimFiyat").text(Number($("#fiyat").val()) - (Number($("#fiyat").val()) * (Number($("#indirim").val()) / 100.0)));
+        }
+        $(document).ready(function () { change() });
+
+    </script>
+    <h4>@Model.urunAdi Güncelle</h4>
+
+<form method="post" class="needs-validation" novalidate>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Stok Adet:</span>
+        </div>
+        <input type="number" id="stokAdet" min="0" value="@Model.stokAdet" name="stokAdet" class="form-control" placeholder="Stok Adet" onkeyup="change()" required />
+        <div class="invalid-feedback">Lütfen Stok Adetini Giriniz.</div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Fiyat</span>
+        </div>
+        <input type="number" id="fiyat" min="0" value="@Model.fiyat" name="fiyat" class="form-control" placeholder="Fiyat" onkeyup="change()" required />
+        <div class="invalid-feedback">Lütfen Fiyatı Giriniz.</div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">İndirim Oranı</span>
+        </div>
+        <input type="number" min="0" max="100" value="@Model.indirimTutari" id="indirim" name="indirimTutari" class="form-control" placeholder="İndirim Oranı" onkeyup="change()" required />
+        <div class="invalid-feedback">Lütfen İndirim Oranını Giriniz.</div>
+    </div>
+    <input type="number" value="@Model.stokId" style="height:1px;width:1px;" name="stokId" class="form-control invisible"  />
+    <label>İndirimli Fiyatı</label>
+    <label id="indirimFiyat">0</label>
+    <br/>
+    <input type="submit" value="Stoğu güncelle" class="btn btn-outline-danger font-weight-bold " id="Send" />
+</form>
+
+    <script>
+        (function () {
+            'use strict';
+            $("document").ready(function () {
+                var forms = $('.needs-validation').get();
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        $(".needs-validation").addClass('was-validated');
+                    }, false);
+                });
+            });
+        })();
+    </script>

@@ -1,0 +1,21 @@
+﻿@using Nerede.Models.Views;
+@model List<urunListesi>
+@{ ViewBag.Title = "Anasayfa"; }
+
+<h2>Anasayfa</h2>
+
+<div id=prod class="card-deck">
+
+    @foreach (var item in Model)
+    {
+<div class="card card-3 p-3">
+    <h4 class="card-title">@item.kategoriAdi Kategorisinde<br /> En Son Eklenen Ürün</h4>
+    <img class="card-img-top" src="@item.resimYolu@item.resimAdi" alt="Card image" style="width:100%">
+    <div class="card-body">
+        <h4 class="card-title">
+            @item.urunAdi
+        </h4>
+        <a href="/Kullanici/Urun/@item.urunId" class="btn btn-danger stretched-link font-weight-bold prodBtn">Ürünü Göster</a>
+    </div>
+</div>}
+</div>

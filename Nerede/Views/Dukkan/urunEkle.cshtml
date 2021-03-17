@@ -1,0 +1,64 @@
+﻿@using Nerede.Models.Tables;
+@using Nerede.Models.Views;
+@model List<Kategori>
+@{
+    ViewBag.Title = "urunEkle";
+    Layout = "~/Views/Shared/_LayoutDukkan.cshtml";
+}
+<h2>Ürün Ekle</h2>
+@ViewData["hata"]
+<form method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+    <div id="uValid" class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Ürün Adı:</span>
+        </div>
+        <input type="text" name="urunAdi" class="form-control" placeholder="Ürünün Adı" id="urunAdi" required />
+        <div class="invalid-feedback">Lütfen Ürünün Adını Giriniz.</div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Ürün Kategori:</span>
+        </div>
+        <select name="kategoriId" class="form-control">
+            @foreach (var item in Model)
+            {
+                <option value="@item.kategoriId">@item.kategoriAdi</option>
+            }
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Ürün Açıklama:</span>
+        </div>
+        <input type="text" name="urunAciklama" class="form-control" placeholder="Ürünün Açıklaması" />
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Ürün Resim:</span>
+        </div>
+        <input type="file" name="resimAdi" class="form-control" accept="image/*" />
+    </div>
+
+    <br />
+    <input type="submit" value="Ürünü Ekle" class="btn btn-outline-danger font-weight-bold " id="Send" />
+</form>
+
+<script>
+    (function a() {
+        'use strict';
+        $("document").ready(function () {
+            var forms = $('.needs-validation').get();
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    $("#uValid").addClass('was-validated');
+                }, false);
+            });
+        });
+    })();
+</script>
